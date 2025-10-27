@@ -19,16 +19,16 @@ def main():
     parser.add_argument('-f', '--format',
                         help='set format of output',
                         default='stylish')
-    
+
     args = parser.parse_args()
-    
+
     try:
         data1 = read_file(args.first_file)
         data2 = read_file(args.second_file)
-        
+
         diff = generate_diff(data1, data2)
         print(diff)
-        
+
     except FileNotFoundError as e:
         print(f"Error: File not found - {e}")
     except json.JSONDecodeError as e:

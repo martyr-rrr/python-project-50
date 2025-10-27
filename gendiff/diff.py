@@ -2,7 +2,7 @@ def generate_diff(data1, data2):
     """Генерирует разницу между двумя словарями"""
     keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff_lines = []
-    
+
     for key in keys:
         if key not in data2:
             diff_lines.append(f"  - {key}: {format_value(data1[key])}")
@@ -13,7 +13,10 @@ def generate_diff(data1, data2):
         else:
             diff_lines.append(f"  - {key}: {format_value(data1[key])}")
             diff_lines.append(f"  + {key}: {format_value(data2[key])}")
-    
+
+    if not diff_lines:
+        return "{}"
+
     return "{\n" + "\n".join(diff_lines) + "\n}"
 
 
