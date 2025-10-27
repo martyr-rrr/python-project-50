@@ -83,3 +83,24 @@ def test_mixed_formats_same_data():
     ]
     expected = "\n".join(expected_lines)
     assert result == expected
+
+
+def test_diff_builder():
+    """Тест построителя diff"""
+    from gendiff.diff_builder import build_diff
+
+    data1 = {'key': 'value'}
+    data2 = {'key': 'value'}
+
+    diff = build_diff(data1, data2)
+    assert diff == [{'key': 'key', 'type': 'unchanged', 'value': 'value'}]
+
+    data1 = {'key': 'old'}
+    data2 = {'key': 'new'}
+    diff = build_diff(data1, data2)
+    assert diff == [{
+        'key': 'key',
+        'type': 'changed',
+        'old_value': 'old',
+        'new_value': 'new'
+    }]

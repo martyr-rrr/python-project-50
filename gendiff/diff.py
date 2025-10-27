@@ -1,4 +1,6 @@
 from gendiff.parsers import read_file
+from gendiff.diff_builder import build_diff
+from gendiff.formatters import stylish
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):
@@ -12,33 +14,19 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
         data1 = file_path1
         data2 = file_path2
 
-    return build_diff(data1, data2)
+    diff = build_diff(data1, data2)
 
-
-def build_diff(data1, data2):
-    """Генерирует разницу между двумя словарями"""
-    keys = sorted(set(data1.keys()) | set(data2.keys()))
-    diff_lines = []
-
-    for key in keys:
-        if key not in data2:
-            diff_lines.append(f"  - {key}: {format_value(data1[key])}")
-        elif key not in data1:
-            diff_lines.append(f"  + {key}: {format_value(data2[key])}")
-        elif data1[key] == data2[key]:
-            diff_lines.append(f"    {key}: {format_value(data1[key])}")
-        else:
-            diff_lines.append(f"  - {key}: {format_value(data1[key])}")
-            diff_lines.append(f"  + {key}: {format_value(data2[key])}")
-
-    if not diff_lines:
-        return "{}"
-
-    return "{\n" + "\n".join(diff_lines) + "\n}"
+    # Выбираем форматер
+    if format_name == 'stylish':
+        return stylish(diff)
+    else:
+        raise ValueError(f"Unsupported format: {format_name}")
 
 
 def format_value(value):
-    """Форматирует значение для вывода"""
+    """Форматирует значение для вывода (для обратной совместимости)"""
     if isinstance(value, bool):
         return str(value).lower()
+    elif value is None:
+        return 'null'
     return str(value)
