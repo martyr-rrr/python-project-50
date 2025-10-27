@@ -1,6 +1,6 @@
 from gendiff.parsers import read_file
 from gendiff.diff_builder import build_diff
-from gendiff.formatters import stylish
+from gendiff.formatters import stylish, plain
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):
@@ -19,6 +19,8 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
     # Выбираем форматер
     if format_name == 'stylish':
         return stylish(diff)
+    elif format_name == 'plain':
+        return plain(diff)
     else:
         raise ValueError(f"Unsupported format: {format_name}")
 

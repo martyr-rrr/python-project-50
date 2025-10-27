@@ -19,16 +19,14 @@ def main():
     parser.add_argument('first_file')
     parser.add_argument('second_file')
     parser.add_argument('-f', '--format',
-                        help='set format of output',
+                        choices=['stylish', 'plain'],
+                        help='set format of output (default: stylish)',
                         default='stylish')
 
     args = parser.parse_args()
 
     try:
-        data1 = read_file(args.first_file)
-        data2 = read_file(args.second_file)
-
-        diff = generate_diff(data1, data2)
+        diff = generate_diff(args.first_file, args.second_file, args.format)
         print(diff)
 
     except FileNotFoundError as e:

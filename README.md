@@ -15,3 +15,12 @@ uv tool install git+https://github.com/martyr-rrr/python-project-50.git
 
 ```bash
 gendiff tests/fixtures/nested/file1.json tests/fixtures/nested/file2.json
+
+## Output formats
+
+### Stylish (default)
+
+```bash
+gendiff file1.json file2.json
+# or
+gendiff --format stylish file1.json file2.json
