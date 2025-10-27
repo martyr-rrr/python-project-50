@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 import argparse
-import json
 from gendiff import generate_diff
+from gendiff.parsers import get_format, parse_data
 
 
 def read_file(file_path):
-    """Читает и парсит JSON файл"""
+    """Читает и парсит файл"""
     with open(file_path, 'r') as file:
-        return json.load(file)
+        content = file.read()
+        file_format = get_format(file_path)
+        return parse_data(content, file_format)
 
 
 def main():
@@ -31,8 +33,8 @@ def main():
 
     except FileNotFoundError as e:
         print(f"Error: File not found - {e}")
-    except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON format - {e}")
+    except (ValueError, Exception) as e:
+        print(f"Error: {e}")
 
 
 if __name__ == '__main__':

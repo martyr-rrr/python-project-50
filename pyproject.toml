@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Compares two configuration files and shows a difference"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "pyyaml>=6.0.3",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -30,11 +32,11 @@ exclude = [".git", "__pycache__", ".venv", "build", "dist"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-#addopts = "--cov=gendiff --cov-report=term-missing"
+addopts = "--cov=gendiff --cov-report=term-missing"
 
-#[tool.coverage.run]
-#source = ["gendiff"]
-#omit = ["*/tests/*", "*/test_*"]
+[tool.coverage.run]
+source = ["gendiff"]
+omit = ["*/tests/*", "*/test_*"]
 
 [dependency-groups]
 dev = [

@@ -1,4 +1,21 @@
-def generate_diff(data1, data2):
+from gendiff.parsers import read_file
+
+
+def generate_diff(file_path1, file_path2, format_name='stylish'):
+    """Генерирует разницу между двумя файлами или словарями"""
+    # Если переданы пути к файлам - читаем их
+    if isinstance(file_path1, str) and isinstance(file_path2, str):
+        data1 = read_file(file_path1)
+        data2 = read_file(file_path2)
+    else:
+        # Если переданы уже готовые данные
+        data1 = file_path1
+        data2 = file_path2
+
+    return build_diff(data1, data2)
+
+
+def build_diff(data1, data2):
     """Генерирует разницу между двумя словарями"""
     keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff_lines = []
