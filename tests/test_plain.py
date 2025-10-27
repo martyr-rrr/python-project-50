@@ -57,7 +57,7 @@ def test_exact_plain_format():
     expected_lines = expected.strip().split('\n')
     result_lines = result.strip().split('\n')
     for i, (exp, res) in enumerate(zip(expected_lines, result_lines)):
-        error_msg = f"Line {i+1} mismatch:\nExpected: {exp}\nActual: {res}"
+        error_msg = f"Line {i + 1} mismatch:\nExpected: {exp}\nActual: {res}"
         assert exp == res, error_msg
     diff_lines_msg = "Different number of lines"
     assert len(expected_lines) == len(result_lines), diff_lines_msg
