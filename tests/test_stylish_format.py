@@ -1,4 +1,4 @@
-from gendiff.core import generate_diff
+from gendiff import generate_diff
 
 
 def test_exact_stylish_format():

@@ -1,6 +1,6 @@
 import json
 import pytest
-from gendiff.core import generate_diff
+from gendiff import generate_diff
 
 
 def read_file(path):
