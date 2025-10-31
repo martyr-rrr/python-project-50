@@ -1,6 +1,10 @@
 # Gendiff
 
 [![Tests](https://github.com/martyr-rrr/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/martyr-rrr/python-project-50/actions/workflows/hexlet-check.yml)
+[![Build](https://github.com/martyr-rrr/python-project-50/actions/workflows/build.yml/badge.svg)](https://github.com/martyr-rrr/python-project-50/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sofi2580_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sofi2580_python-project-50)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sofi2580_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sofi2580_python-project-50)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sofi2580_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sofi2580_python-project-50)
 
 A utility for finding differences between configuration files.
 
