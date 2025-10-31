@@ -1,6 +1,6 @@
 import json
 import pytest
-from gendiff import generate_diff
+from gendiff.core import generate_diff
 
 
 def read_file(path):
@@ -36,7 +36,7 @@ def test_generate_diff_with_empty_files():
 
 
 def test_parsers():
-    from gendiff.parsers import parse_data, get_format
+    from gendiff.core.parsers import parse_data, get_format
 
     # Test JSON parser
     json_data = '{"key": "value"}'
@@ -87,7 +87,7 @@ def test_mixed_formats_same_data():
 
 def test_diff_builder():
     """Тест построителя diff"""
-    from gendiff.diff_builder import build_diff
+    from gendiff.core.diff_builder import build_diff
 
     data1 = {'key': 'value'}
     data2 = {'key': 'value'}
