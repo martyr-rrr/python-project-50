@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from gendiff import generate_diff
-from gendiff.parsers import get_format, parse_data
+from gendiff.core.parsers import get_format, parse_data
 
 
 def read_file(file_path):
@@ -22,13 +22,13 @@ def main():
                         choices=['stylish', 'plain', 'json'],
                         help='set format of output (default: stylish)',
                         default='stylish')
-
+    
     args = parser.parse_args()
-
+    
     try:
         diff = generate_diff(args.first_file, args.second_file, args.format)
         print(diff)
-
+        
     except FileNotFoundError as e:
         print(f"Error: File not found - {e}")
     except (ValueError, Exception) as e:
