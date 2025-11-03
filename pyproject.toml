@@ -16,7 +16,7 @@ dev = [
 ]
 
 [project.scripts]
-gendiff = "gendiff.cli.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 
 [build-system]
 requires = ["hatchling"]

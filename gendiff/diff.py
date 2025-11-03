@@ -1,5 +1,5 @@
-from gendiff.core.parsers import read_file
-from gendiff.core.diff_builder import build_diff
+from gendiff.parsers import read_file
+from gendiff.diff_builder import build_diff
 from gendiff.formatters import stylish, plain, json
 
 
